@@ -41,14 +41,22 @@ int build_tree(std::map<std::wstring, unsigned int> &mp, std::list<std::wstring>
   
 int srch(int key, int doc_num, std::map<unsigned int, std::set<unsigned int>> &rev_ind, std::map<int, std::list<int>> &tree, int ms) - рекурсивно обходит дерево запроса
   
-void process_stream_search(std::list<int> &res, std::map<std::wstring, unsigned int> &mp, 
+void process_stream_search(std::list<int> &res, std::map<std::wstring, unsigned int> &mp,
+  
                                                 std::list<std::wstring> &pol_not, 
+  
                                                 std::map<unsigned int, 
+                                                                  
                                                 std::set<unsigned int>> &rev_ind, int ms) - осуществляет потоковый поиск
+  
 void vb1(unsigned int num, std::ofstream &out) - кодирует одно число в varbyte
+  
 unsigned int vb1_symb_dec(std::ifstream &in) - декодирует одно число из varbyte
+  
 void code_dict(std::ofstream &out, std::map<unsigned int, std::set<unsigned int>> &mp) - кодирует индекс в varbyte
+  
 void decode_dict(std::ifstream &in, std::map<unsigned int, std::set<unsigned int>> &mp) - декодирует индекс из varbyte
+
 
 
 
