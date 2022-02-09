@@ -16,22 +16,31 @@
 - называться dump1.gz, dump2.gz, ..., dump8.gz.
 
 Описание файлов и логики программы:
+
 1). Вспомогательные функции и основной скрипт - в main.cpp, сбор - make, запуск собранной программы: ./main4
+
 2). Основной скрипт:
--считывает данные из .gz файлов, переводит их в utf-16
--строит прямой и обратный индексы в формате std::map<unsigned int, std::set<unsigned int>>
--сжимает их с помощью varbyte в файлы rev_ind.txt, index.txt
--декодирует эти файлы
--принимает запрос от пользователя (вводится с клавиатуры), переводит его в обратную польскую нотацию
--строит по ней дерево
--осуществляет потоковую обработку запроса, выводит результаты
--чтобы прекратить исполнение программы, введите 0.
+
+* считывает данные из .gz файлов, переводит их в utf-16
+* строит прямой и обратный индексы в формате std::map<unsigned int, std::set<unsigned int>>
+* сжимает их с помощью varbyte в файлы rev_ind.txt, index.txt
+* декодирует эти файлы
+* принимает запрос от пользователя (вводится с клавиатуры), переводит его в обратную польскую нотацию
+* строит по ней дерево
+* осуществляет потоковую обработку запроса, выводит результаты
+* чтобы прекратить исполнение программы, введите 0.
+  
 3). Вспомогательные функции:
 void first_parsing(std::wstring unparsed, std::list<std::wstring> &parsed) - токенизирует поступивший запрос
+  
 void polish_notation(std::list<std::wstring> &parsed, std::list<std::wstring> &pol_not) - переводит токенизированный запрос в обратную польскую нотацию
+  
 void create_node(int &key, int elem_type, int elem_code, std::list<int> &stack, std::map<int, std::list<int>> &tree) - создает вершину дерева запроса
+  
 int build_tree(std::map<std::wstring, unsigned int> &mp, std::list<std::wstring> &pol_not, std::map<int, std::list<int>> &tree) - строит дерево запроса
+  
 int srch(int key, int doc_num, std::map<unsigned int, std::set<unsigned int>> &rev_ind, std::map<int, std::list<int>> &tree, int ms) - рекурсивно обходит дерево запроса
+  
 void process_stream_search(std::list<int> &res, std::map<std::wstring, unsigned int> &mp, 
                                                 std::list<std::wstring> &pol_not, 
                                                 std::map<unsigned int, 
